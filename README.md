@@ -17,7 +17,7 @@ Tinkercad Circuit demonstartion-
 ![Demo GIF](images/Tinkercad_demo_gif.gif)
 
 
-## Actual Working Project demonstartion-
+## Actual Working Project-
 [Demo Video](https://youtube.com/shorts/tWdeabTais4?feature=share) 
 
 ## Features
