@@ -17,11 +17,11 @@ Tinkercad Circuit demonstartion-
 ![Demo GIF](images/Tinkercad_demo_gif.gif)
 
 
-Actual Working Project demonstartion-
+## Actual Working Project demonstartion-
 [![Demo Video](https://youtube.com/shorts/tWdeabTais4?feature=share) 
 
 ## Features
-- Press advance button: cycles Red → Green → YellowROJECproject_demo_video
+- Press advance button: cycles Red → Green → Yellow
 - Press reset button: returns to Red
 
 ## Components
