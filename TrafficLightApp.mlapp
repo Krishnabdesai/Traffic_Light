@@ -1,0 +1,137 @@
+% Code for trafficLight app in matlab app designer
+
+classdef TrafficLightApp < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure            matlab.ui.Figure
+        ResetButton         matlab.ui.control.Button
+        LampRed             matlab.ui.control.Lamp
+        LampYellow          matlab.ui.control.Lamp
+        LampGreen           matlab.ui.control.Lamp
+        AdvanceStateButton  matlab.ui.control.Button
+    end
+
+    
+    properties (Access = private)
+        TL % Holds our TrafficLight object
+    end
+    
+    methods (Access = private)
+        
+        function currLampName = GetCurrLampName(app)
+            currLampName = "Lamp" + app.TL.GetState();
+        end
+        function DisableCurrentLamp(app) 
+            app.(app.GetCurrLampName()).Enable = "off";
+        end
+        function EnableCurrentLamp(app)
+            app.(app.GetCurrLampName()).Enable = "on";
+        end
+        
+        function ResetFunc(app)
+            app.TL = TrafficLight();
+            app.LampRed.Enable = "on";
+            app.LampYellow.Enable = "off";
+            app.LampGreen.Enable = "off";
+        end
+    end
+    
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Code that executes after component creation
+        function startupFcn(app)
+            app.TL = TrafficLight();
+            app.LampRed.Enable = "on";
+            app.LampYellow.Enable = "off";
+            app.LampGreen.Enable = "off";
+        end
+
+        % Button pushed function: AdvanceStateButton
+        function AdvanceStateButtonPushed(app, event)
+            app.DisableCurrentLamp();
+            app.TL.Advance();
+            app.EnableCurrentLamp();
+        end
+
+        % Button pushed function: ResetButton
+        function ResetButtonPushed(app, event)
+           app.ResetFunc(); 
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 640 480];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create AdvanceStateButton
+            app.AdvanceStateButton = uibutton(app.UIFigure, 'push');
+            app.AdvanceStateButton.ButtonPushedFcn = createCallbackFcn(app, @AdvanceStateButtonPushed, true);
+            app.AdvanceStateButton.FontName = 'Arial';
+            app.AdvanceStateButton.FontWeight = 'bold';
+            app.AdvanceStateButton.Position = [187 47 106 22];
+            app.AdvanceStateButton.Text = 'Advance Button';
+
+            % Create LampGreen
+            app.LampGreen = uilamp(app.UIFigure);
+            app.LampGreen.Position = [292 140 60 60];
+
+            % Create LampYellow
+            app.LampYellow = uilamp(app.UIFigure);
+            app.LampYellow.Position = [291 232 61 61];
+            app.LampYellow.Color = [1 0.9098 0.3922];
+
+            % Create LampRed
+            app.LampRed = uilamp(app.UIFigure);
+            app.LampRed.Position = [290 325 62 62];
+            app.LampRed.Color = [1 0 0];
+
+            % Create ResetButton
+            app.ResetButton = uibutton(app.UIFigure, 'push');
+            app.ResetButton.ButtonPushedFcn = createCallbackFcn(app, @ResetButtonPushed, true);
+            app.ResetButton.FontWeight = 'bold';
+            app.ResetButton.Position = [352 47 100 22];
+            app.ResetButton.Text = 'Reset Button';
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = TrafficLightApp
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            % Execute the startup function
+            runStartupFcn(app, @startupFcn)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
