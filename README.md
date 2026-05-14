@@ -9,10 +9,6 @@ Arduino (TinkerCad):
 A physical circuit simulation using an Arduino UNO with three LEDs and two push buttons. The Advance button cycles through the traffic light states, and the Reset button returns to Red. Edge detection ensures each button press registers only once.
 
 ## Demo
-Schematic Diagram-
-![Schematic Diagram](images/Schematic_Diagram.jpg)
-
-
 Matlab App demonstartion-
 ![Demo GIF](images/MatlabApp_demo_gif.gif)
 
@@ -21,8 +17,11 @@ Tinkercad Circuit demonstartion-
 ![Demo GIF](images/Tinkercad_demo_gif.gif)
 
 
+Actual Working Project demonstartion-
+![Demo GIF](images/project_demo_gif.gif)
+
 ## Features
-- Press advance button: cycles Red → Green → Yellow
+- Press advance button: cycles Red → Green → YellowROJECproject_demo_video
 - Press reset button: returns to Red
 
 ## Components
