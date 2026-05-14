@@ -33,8 +33,3 @@ Tinkercad Circuit demonstartion-
 - 2x push buttons
 - Breadboard + jumper wires
 
-
-Brief explanation of how your code works.
-
-## Circuit Diagram
-![Circuit Diagram](images/diagram.png)
