@@ -18,7 +18,7 @@ Tinkercad Circuit demonstartion-
 
 
 ## Actual Working Project demonstartion-
-[![Demo Video](https://youtube.com/shorts/tWdeabTais4?feature=share) 
+[Demo Video](https://youtube.com/shorts/tWdeabTais4?feature=share) 
 
 ## Features
 - Press advance button: cycles Red → Green → Yellow
